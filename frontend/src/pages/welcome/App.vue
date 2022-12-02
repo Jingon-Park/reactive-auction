@@ -1,5 +1,5 @@
 <template>
-    <img alt="Vue logo" src="../../assets/logo.png">
+    <img alt="auction logo" src="../../assets/auctionLogo.png">
     <h2>welcome page</h2>
   </template>
   

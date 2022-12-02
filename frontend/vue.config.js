@@ -1,7 +1,13 @@
 
 module.exports = {
-  outputDir: "../src/main/resources/templates",
+  outputDir: "../src/main/resources/static/",
+  indexPath: '../templates/index.html',
   pages:{
+    default:{
+      entry: 'src/main.js',
+      template: 'public/index.html',
+      filename: 'index.html'
+    },
     login:{
         entry: 'src/pages/login/main.js',
         template: 'public/login.html',
