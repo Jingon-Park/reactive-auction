@@ -1,5 +1,8 @@
 package com.reactive.auction.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,8 +17,8 @@ import java.sql.Date;
 @Table(name = "Items")
 @Data
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
+@JsonDeserialize(builder = Item.ItemBuilder.class)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Item {
 
     @Id
@@ -42,5 +45,8 @@ public class Item {
     @Column("bib_amount")
     Long bidAmount;
 
+    @JsonPOJOBuilder(withPrefix = "")
+    public static class ItemBuilder {
+    }
 
 }

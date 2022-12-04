@@ -1,5 +1,8 @@
 package com.reactive.auction.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
@@ -9,8 +12,8 @@ import org.springframework.data.relational.core.mapping.Table;
 @Table(name = "Users")
 @Getter
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
+@JsonDeserialize(builder = User.UserBuilder.class)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class User {
 
     @Id
@@ -24,4 +27,7 @@ public class User {
     @Column("social_type")
     Integer socialType;
 
+    @JsonPOJOBuilder(withPrefix = "")
+    public static class UserBuilder {
+    }
 }
