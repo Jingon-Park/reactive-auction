@@ -1,7 +1,9 @@
 package com.reactive.auction.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.relational.core.mapping.Column;
@@ -12,6 +14,8 @@ import java.sql.Date;
 @Table(name = "Items")
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Item {
 
     @Id
@@ -37,4 +41,6 @@ public class Item {
 
     @Column("bib_amount")
     Long bidAmount;
+
+
 }
