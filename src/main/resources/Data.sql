@@ -1,4 +1,5 @@
 -- Auction.Users definition
+
 CREATE TABLE `Users` (
   `user_id` int unsigned NOT NULL AUTO_INCREMENT,
   `nick_name` varchar(20) DEFAULT NULL,
@@ -17,11 +18,30 @@ CREATE TABLE `Items` (
   `start_time` date DEFAULT NULL,
   `end_time` date DEFAULT NULL,
   `user_id` int unsigned DEFAULT NULL,
-  `bib_user_id` int unsigned DEFAULT NULL,
-  `bib_amount` int unsigned DEFAULT NULL,
+  `bid_user_id` int unsigned DEFAULT NULL,
+  `bid_price` int unsigned DEFAULT NULL,
+  `start_price` int unsigned NOT NULL DEFAULT '0',
+  `sell_price` int unsigned DEFAULT NULL,
+  `status` tinyint unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`item_id`),
   KEY `user_id` (`user_id`),
-  KEY `bib_user_id` (`bib_user_id`),
+  KEY `bib_user_id` (`bid_user_id`),
   CONSTRAINT `Items_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `Users` (`user_id`) ON DELETE RESTRICT ON UPDATE CASCADE,
-  CONSTRAINT `Items_ibfk_2` FOREIGN KEY (`bib_user_id`) REFERENCES `Users` (`user_id`) ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  CONSTRAINT `Items_ibfk_2` FOREIGN KEY (`bid_user_id`) REFERENCES `Users` (`user_id`) ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Auction.Auction_History definition
+
+CREATE TABLE `Auction_History` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `item_id` int unsigned NOT NULL,
+  `bid_user_id` int unsigned DEFAULT NULL,
+  `bid_price` int unsigned DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `Auction_History_UN` (`id`,`item_id`),
+  KEY `Auction_History_FK` (`item_id`),
+  KEY `Auction_History_FK_1` (`bid_user_id`),
+  CONSTRAINT `Auction_History_FK` FOREIGN KEY (`item_id`) REFERENCES `Items` (`item_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `Auction_History_FK_1` FOREIGN KEY (`bid_user_id`) REFERENCES `Users` (`user_id`) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+

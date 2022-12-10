@@ -3,10 +3,8 @@ package com.reactive.auction.domain;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.relational.core.mapping.Column;
@@ -42,8 +40,19 @@ public class Item {
     @Column("bib_user_ud")
     Long bibUserId;
 
-    @Column("bib_amount")
+    @Column("bib_price")
     Long bidAmount;
+
+    @Column("start_price")
+    Long startPrice;
+
+    @Column("sell_price")
+    Long sellPrice;
+
+    @Column("status")
+    Integer status;
+
+
 
     @JsonPOJOBuilder(withPrefix = "")
     public static class ItemBuilder {

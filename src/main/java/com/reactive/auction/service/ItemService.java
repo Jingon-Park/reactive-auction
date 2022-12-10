@@ -23,4 +23,8 @@ public class ItemService {
     public Mono<Item> addItem(Item item) {
         return itemRepository.save(item);
     }
+
+    public Mono<Item> findItem(Long itemId) {
+        return itemRepository.findById(itemId);
+    }
 }

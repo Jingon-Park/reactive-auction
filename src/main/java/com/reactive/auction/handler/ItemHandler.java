@@ -34,4 +34,15 @@ public class ItemHandler {
                 });
     }
 
+    public Mono<ServerResponse> findItem(ServerRequest request) {
+
+        Long itemId = Long.parseLong(request.pathVariable("itemId"));
+        Mono<Item> item = itemService.findItem(itemId);
+        log.info("test : {}", item);
+
+        return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(item, Item.class);
+
+
+    }
+
 }

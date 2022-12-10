@@ -39,6 +39,7 @@ public class RouterConfig {
     public RouterFunction<ServerResponse> apiRouter(){
         return RouterFunctions.route(GET("/users"), userHandler::findUsers)
                 .andRoute(GET("/items"), itemHandler::findItems)
-                .andRoute(POST("item"), itemHandler::addItem);
+                .andRoute(GET("/item/{itemId}"), itemHandler::findItem)
+                .andRoute(POST("/item"), itemHandler::addItem);
     }
 }
