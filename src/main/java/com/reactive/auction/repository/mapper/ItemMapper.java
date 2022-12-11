@@ -20,6 +20,7 @@ public class ItemMapper implements BiFunction<Row, RowMetadata, Item> {
                 .startPrice(row.get("start_price", Long.class))
                 .sellPrice(row.get("sell_price", Long.class))
                 .status(row.get("status", Integer.class))
+                .titleImg(row.get("title_img", String.class))
                 .user(User.builder()
                         .userId(row.get("user_id", Long.class))
                         .nickName(row.get("nick_name", String.class))

@@ -17,7 +17,7 @@ public class CustomItemRepositoryImpl implements CustomItemRepository {
 
     private final String itemJoinQuery = "SELECT "+
             "Users.user_id, Users.nick_name, Users.email,"+
-            "item_id, title, description, start_time, end_time, bid_user_id, bid_price, start_price, sell_price, status "+
+            "item_id, title, description, start_time, end_time, bid_user_id, bid_price, start_price, sell_price, status, title_img "+
             "FROM Items "+
             "INNER JOIN Users ";
 

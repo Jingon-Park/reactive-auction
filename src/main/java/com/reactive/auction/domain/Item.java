@@ -52,6 +52,9 @@ public class Item {
     @Column("status")
     Integer status;
 
+    @Column("title_img")
+    String titleImg;
+
 
 
     @JsonPOJOBuilder(withPrefix = "")
