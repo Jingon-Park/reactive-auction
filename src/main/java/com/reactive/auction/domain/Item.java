@@ -55,8 +55,6 @@ public class Item {
     @Column("title_img")
     String titleImg;
 
-
-
     @JsonPOJOBuilder(withPrefix = "")
     public static class ItemBuilder {
     }

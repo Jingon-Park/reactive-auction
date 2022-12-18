@@ -1,7 +1,6 @@
 package com.reactive.auction.handler;
 
 import com.reactive.auction.domain.User;
-import com.reactive.auction.repository.UserRepository;
 import com.reactive.auction.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,7 +23,7 @@ public class UserHandler {
         this.userService = userService;
     }
 
-    public Mono<ServerResponse> findUsers(ServerRequest request){
+    public Mono<ServerResponse> getUsers(ServerRequest request){
 
         Flux<User> allUsers = userService.findAllUsers();
 

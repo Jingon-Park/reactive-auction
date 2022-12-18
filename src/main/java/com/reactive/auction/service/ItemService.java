@@ -25,6 +25,6 @@ public class ItemService {
     }
 
     public Mono<Item> findItem(Long itemId) {
-        return itemRepository.findById(itemId);
+        return itemRepository.findItemWithUser(itemId);
     }
 }

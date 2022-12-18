@@ -1,13 +1,10 @@
 package com.reactive.auction.config.router;
 
 import com.reactive.auction.handler.ItemHandler;
+import com.reactive.auction.handler.ItemInfoHandler;
 import com.reactive.auction.handler.UserHandler;
-import io.r2dbc.spi.ConnectionFactory;
 import org.springframework.context.annotation.Bean;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.MediaType;
-import org.springframework.r2dbc.connection.init.ConnectionFactoryInitializer;
-import org.springframework.r2dbc.connection.init.ResourceDatabasePopulator;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.RouterFunctions;
@@ -22,11 +19,13 @@ import static org.springframework.web.reactive.function.server.ServerResponse.ok
 public class RouterConfig {
     private UserHandler userHandler;
     private ItemHandler itemHandler;
+    private ItemInfoHandler itemInfoHandler;
 
-    public RouterConfig(UserHandler userHandler, ItemHandler itemHandler) {
+    public RouterConfig(UserHandler userHandler, ItemHandler itemHandler, ItemInfoHandler itemInfoHandler) {
 
         this.userHandler = userHandler;
         this.itemHandler = itemHandler;
+        this.itemInfoHandler = itemInfoHandler;
     }
 
     @Bean
@@ -37,9 +36,11 @@ public class RouterConfig {
 
     @Bean
     public RouterFunction<ServerResponse> apiRouter(){
-        return RouterFunctions.route(GET("/users"), userHandler::findUsers)
-                .andRoute(GET("/items"), itemHandler::findItems)
-                .andRoute(GET("/item/{itemId}"), itemHandler::findItem)
-                .andRoute(POST("/item"), itemHandler::addItem);
+        return RouterFunctions.route(GET("/users"), userHandler::getUsers)
+                .andRoute(GET("/items"), itemHandler::getItems)
+                .andRoute(GET("/item/{itemId}"), itemHandler::getItem)
+                .andRoute(POST("/item"), itemHandler::addItem)
+                .andRoute(GET("itemInfo/{name}"), itemInfoHandler::getItemInfo)
+                .andRoute(GET("item/category/{name}"), itemHandler::getItemByCategory);
     }
 }
