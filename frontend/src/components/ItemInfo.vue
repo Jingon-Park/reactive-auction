@@ -1,27 +1,63 @@
 <template>
-  <v-sheet
-    color="white"
-    elevation="1"
-    height="250"
-    outlined
-    rounded
-    shaped
-    width="200"
+  <v-col>
+  <v-card
+    class="mx-auto"
+    max-width="344"
+    min-width="344"
   >
-    <div class="box">
-      <v-img :src="item.titleImg" width="150px" height="150px" />
-    </div>
-    <div class="box">
-        titlekhjsdfhsdfdlksjfsdifjsd
-        fewlfjweifejwifwe
-        fewlfejwlfwej
-    </div>
-    <div class="box">
-        {{item.bidPrice}} 원
-    </div>
-    
-  </v-sheet>
+    <v-img
+      :src="item.titleImg"
+      height="200px"
+    ></v-img>
 
+    <v-card-title style="text-align:left;">
+      {{ item.title }}
+    </v-card-title>
+
+    <v-card-text style="text-align:left; height: 10px;">
+      {{ item.descript }}
+      ffewfew
+      fwefwefwe
+      fwefewfwefwefffewfew
+      fwefwefwe
+      fwefewfwefwef
+      wefwfewfewfwe
+      fewfewfewfewfw
+      fwfewfwefewfffewfew
+      fwefwefwe
+      fwefewfwefwef
+      wefwfewfewfwe
+      fewfewfewfewfw
+      fwfewfwefewfffewfew
+      fwefwefwe
+      fwefewfwefwef
+      wefwfewfewfwe
+      fewfewfewfewfw
+      fwfewfwefewfffewfew
+      fwefwefwe
+      fwefewfwefwef
+      wefwfewfewfwe
+      fewfewfewfewfw
+      fwfewfwefewfffewfew
+      fwefwefwe
+      fwefewfwefwef
+      wefwfewfewfwe
+      fewfewfewfewfw
+      fwfewfwefewfffewfew
+      fwefwefwe
+      fwefewfwefwef
+      wefwfewfewfwe
+      fewfewfewfewfw
+      fwfewfwefewfffewfew
+      fwefwefwe
+      fwefewfwefwef
+      wefwfewfewfwe
+      fewfewfewfewfw
+      fwfewfwefewf
+    </v-card-text>
+
+  </v-card>
+</v-col>
 </template>
 
 <script>

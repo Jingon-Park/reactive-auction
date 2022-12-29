@@ -1,9 +1,15 @@
 <template>
-    <div>test component</div>
-    <ItemInfo v-bind:item='item'></ItemInfo>
-    <div>
-      {{items}}
-    </div>
+  <v-container>
+    <v-row>
+    <div>검색 목록</div>
+    <v-row justify="start">
+      <ItemInfo v-for="item in items" :key="item" v-bind:item="item"></ItemInfo>
+    </v-row>
+    
+  </v-row>
+  
+  </v-container>
+  
 </template>
 
 <script>
@@ -16,9 +22,12 @@ export default {
     },
     data: function () {
     return {
-      item: {'titleImg' : 'https://search.pstatic.net/sunny/?src=https%3A%2F%2Fthumb2.gettyimageskorea.com%2Fimage_preview%2F700%2F202201%2FFKF%2F1345137937.jpg&type=sc960_832',
+      item: {
+              'title' : "title mesessage",
+              'titleImg' : 'https://search.pstatic.net/sunny/?src=https%3A%2F%2Fthumb2.gettyimageskorea.com%2Fimage_preview%2F700%2F202201%2FFKF%2F1345137937.jpg&type=sc960_832',
               'bidPrice' : 10000
             },
+      test: [1,2,3,4,5]
     };
   },
 

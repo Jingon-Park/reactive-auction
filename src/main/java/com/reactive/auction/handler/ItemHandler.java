@@ -56,7 +56,6 @@ public class ItemHandler {
             return itemService.findItem(data.getItemId());
         });
 
-
         return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(items, Item.class);
 
     }
