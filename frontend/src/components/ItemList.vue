@@ -1,15 +1,16 @@
 <template>
-  <v-container>
-    <v-row>
-    <div>검색 목록</div>
-    <v-row justify="start">
-      <ItemInfo v-for="item in items" :key="item" v-bind:item="item"></ItemInfo>
-    </v-row>
-    
-  </v-row>
-  
-  </v-container>
-  
+  <v-item-group>
+    <v-container grid-list-md>
+      <v-layout wrap>
+        <v-col>
+          <v-item>
+            <ItemInfo v-for="item in items" :key="item" v-bind:item="item"></ItemInfo>
+          </v-item>
+        </v-col>
+          
+      </v-layout>
+    </v-container>
+  </v-item-group>
 </template>
 
 <script>
